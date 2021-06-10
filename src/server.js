@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import fs, { read, stat } from "fs";
+import fs from "fs";
 
 let blogiumData = {
     posts: [],
@@ -61,13 +61,13 @@ app.post("/posts", (req, res) => {
         res.status(400);
         res.send(error);
     } else {
+        idCounter.post++;
         posts.push({
             ...req.body,
-            id: idCounter.post + 1,
+            id: idCounter.post,
             contentPreview: "preview",
             commentCount: 0,
         });
-        idCounter.post++;
         saveJSON();
         res.send("OK");
     }
@@ -101,12 +101,11 @@ app.post("/posts/:id/comments", (req, res) => {
         res.status(400);
         res.send(error);
     } else {
+        idCounter.comment++;
         comments.push({
-            id: idCounter.comment + 1,
+            id: idCounter.comment,
             ...req.body,
         });
-        post.commentCount++;
-        idCounter.comment++;
         saveJSON();
         res.send("OK");
     }

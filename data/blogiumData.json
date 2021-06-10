@@ -10,10 +10,10 @@
         },
         {
             "id": 2,
-            "title": "Segundo Post",
-            "coverUrl": "https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png",
-            "contentPreview": "Esta é o segundo post",
-            "content": "Este é o conteúdo do SEGUNDO post, O MELHOR POST...",
+            "title": "The X-Wing",
+            "coverUrl": "https://cdn.wallpapersafari.com/95/75/4za6hi.jpg",
+            "contentPreview": "About this awesome ship...",
+            "content": "It looks awesome, does't it? That's about it. Bye!",
             "commentCount": 2
         }
     ],
@@ -33,14 +33,14 @@
         {
             "id": 3,
             "postId": 2,
-            "author": "Anakin",
-            "content": "Esse post é brabo"
+            "author": "Obi Wan",
+            "content": "Hello there!"
         },
         {
             "id": 4,
             "postId": 2,
             "author": "Darth Vader",
-            "content": "Venha para o lado sombrio!"
+            "content": "Come to the dark side!"
         }
     ],
     "idCounter": {
