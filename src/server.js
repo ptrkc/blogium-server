@@ -66,7 +66,7 @@ app.get("/posts", (req, res) => {
 });
 
 app.get("/posts/:id", (req, res) => {
-    res.send(posts.find((p) => p.id === Number(req.params.id)));
+    res.send(posts.find((p) => p.id === parseInt(req.params.id)));
 });
 
 app.post("/posts", (req, res) => {
@@ -81,7 +81,7 @@ app.post("/posts", (req, res) => {
 });
 
 app.get("/posts/:id/comments", (req, res) => {
-    res.send(comments.filter((c) => c.postId === Number(req.params.id)));
+    res.send(comments.filter((c) => c.postId === parseInt(req.params.id)));
 });
 
 app.post("/posts/:id/comments", (req, res) => {
@@ -94,7 +94,7 @@ app.post("/posts/:id/comments", (req, res) => {
 });
 
 app.put("/posts/:id", (req, res) => {
-    const post = posts.find((p) => p.id === Number(req.params.id));
+    const post = posts.find((p) => p.id === parseInt(req.params.id));
     post.title = req.body.title;
     post.coverUrl = req.body.coverUrl;
     post.content = req.body.content;
@@ -102,7 +102,9 @@ app.put("/posts/:id", (req, res) => {
 });
 
 app.delete("/posts/:id", (req, res) => {
-    res.send("delete /posts/" + req.params.id);
+    const index = posts.findIndex((p) => p.id === parseInt(req.params.id));
+    posts.splice(index, 1);
+    res.send("OK");
 });
 
 app.listen(4000);
