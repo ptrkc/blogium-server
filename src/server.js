@@ -101,6 +101,7 @@ app.post("/posts/:id/comments", (req, res) => {
         res.status(400);
         res.send(error);
     } else {
+        post.commentCount++;
         idCounter.comment++;
         comments.push({
             id: idCounter.comment,
