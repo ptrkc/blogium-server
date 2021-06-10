@@ -94,7 +94,11 @@ app.post("/posts/:id/comments", (req, res) => {
 });
 
 app.put("/posts/:id", (req, res) => {
-    res.send("put /posts/" + req.params.id);
+    const post = posts.find((p) => p.id === Number(req.params.id));
+    post.title = req.body.title;
+    post.coverUrl = req.body.coverUrl;
+    post.content = req.body.content;
+    res.send("OK");
 });
 
 app.delete("/posts/:id", (req, res) => {
