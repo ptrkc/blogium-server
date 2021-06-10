@@ -76,7 +76,8 @@ app.post("/posts", (req, res) => {
         contentPreview: "preview",
         commentCount: 0,
     });
-    res.send(req.body);
+    idCounter.post++;
+    res.send("OK");
 });
 
 app.get("/posts/:id/comments", (req, res) => {
@@ -84,6 +85,11 @@ app.get("/posts/:id/comments", (req, res) => {
 });
 
 app.post("/posts/:id/comments", (req, res) => {
+    comments.push({
+        id: idCounter.comment + 1,
+        ...req.body,
+    });
+    idCounter.comment++;
     res.send("post /posts/" + req.params.id + "/comments");
 });
 
