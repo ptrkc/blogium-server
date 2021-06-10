@@ -25,7 +25,7 @@ const blogiumData = {
                 "https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png",
             contentPreview: "Esta é o segundo post",
             content: "Este é o conteúdo do SEGUNDO post, O MELHOR POST...",
-            commentCount: 3,
+            commentCount: 2,
         },
     ],
     comments: [
@@ -89,8 +89,10 @@ app.post("/posts/:id/comments", (req, res) => {
         id: idCounter.comment + 1,
         ...req.body,
     });
+    const post = posts.find((p) => p.id === parseInt(req.params.id));
+    post.commentCount++;
     idCounter.comment++;
-    res.send("post /posts/" + req.params.id + "/comments");
+    res.send("OK");
 });
 
 app.put("/posts/:id", (req, res) => {
