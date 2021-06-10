@@ -36,7 +36,13 @@ app.get("/posts/:id", (req, res) => {
 });
 
 app.post("/posts", (req, res) => {
-    res.send("post /posts");
+    posts.push({
+        ...req.body,
+        id: 3,
+        contentPreview: "preview",
+        commentCount: 0,
+    });
+    res.send(req.body);
 });
 
 app.get("/posts/:id/comments", (req, res) => {
