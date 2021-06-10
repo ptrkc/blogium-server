@@ -5,12 +5,34 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const posts = [
+    {
+        id: 1,
+        title: "Hello World",
+        coverUrl:
+            "https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png",
+        contentPreview: "Esta é a estrutura de um post esperado pelo front-end",
+        content:
+            "Este é o conteúdo do post, o que realmente vai aparecer na página do post...",
+        commentCount: 2,
+    },
+    {
+        id: 2,
+        title: "Segundo Post",
+        coverUrl:
+            "https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png",
+        contentPreview: "Esta é o segundo post",
+        content: "Este é o conteúdo do SEGUNDO post, O MELHOR POST...",
+        commentCount: 3,
+    },
+];
+
 app.get("/posts", (req, res) => {
-    res.send("get /posts");
+    res.send(posts);
 });
 
 app.get("/posts/:id", (req, res) => {
-    res.send("get /posts/" + req.params.id);
+    res.send(posts.find((p) => p.id === Number(req.params.id)));
 });
 
 app.post("/posts", (req, res) => {
