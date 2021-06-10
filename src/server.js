@@ -27,6 +27,37 @@ const posts = [
     },
 ];
 
+const comments = {
+    1: [
+        {
+            id: 1,
+            postId: 1,
+            author: "João",
+            content: "Muito bom esse post! Tá de parabéns",
+        },
+        {
+            id: 2,
+            postId: 1,
+            author: "Maria",
+            content: "Como faz pra dar palmas?",
+        },
+    ],
+    2: [
+        {
+            id: 1,
+            postId: 2,
+            author: "Anakin",
+            content: "Esse post é brabo",
+        },
+        {
+            id: 2,
+            postId: 2,
+            author: "Darth Vader",
+            content: "Venha para o lado sombrio!",
+        },
+    ],
+};
+
 app.get("/posts", (req, res) => {
     res.send(posts);
 });
@@ -46,7 +77,7 @@ app.post("/posts", (req, res) => {
 });
 
 app.get("/posts/:id/comments", (req, res) => {
-    res.send("get /posts/" + req.params.id + "/comments");
+    res.send(comments[Number(req.params.id)]);
 });
 
 app.post("/posts/:id/comments", (req, res) => {
